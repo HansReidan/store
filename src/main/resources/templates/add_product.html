@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aggiungi Prodotto</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Aggiungi un Nuovo Prodotto</h1>
+<form action="#" th:action="@{/products}" th:object="${product}" method="post">
+    <!-- action="#" → Serve come fallback HTML, ma sarà sovrascritto da th:action -->
+    <!-- th:action="@{/products}" → Thymeleaf sostituirà questo con l’URL /products, cioè il form invierà i dati a /products -->
+    <!-- th:object="${product}" → Indica che i campi del form sono associati a un oggetto Product nel model Spring. -->
+    <p>
+        <label for="name">Descrizione:</label>
+        <input type="text" id="name" th:field="*{description}"/>
+        <!-- th:field → lega il campo HMTL alla proprietà in Product -->
+    </p>
+    <p>
+        <label for="price">Prezzo (€):</label>
+        <input type="text" id="price" th:field="*{price}"/>
+        <!-- th:field → lega il campo HMTL alla proprietà in Product -->
+    </p>
+    <p>
+        <button type="submit">Aggiungi</button>
+    </p>
+</form>
+<a href="/products">Torna all'elenco dei prodotti</a>
+</body>
+</html>

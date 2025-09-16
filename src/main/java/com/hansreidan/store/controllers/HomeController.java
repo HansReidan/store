@@ -2,6 +2,7 @@ package com.hansreidan.store.controllers;
 
 import com.hansreidan.store.domain.Product;
 import com.hansreidan.store.domain.Utente;
+import com.hansreidan.store.exceptions.ProductNotFoundException;
 import com.hansreidan.store.jpa.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,25 +26,62 @@ public class HomeController {
 //        return "index.html";
 //    }
 
+    List<Product> products = Arrays.asList(
+            new Product(1L, "Roblox", 999.99),
+            new Product(2L, "Smartphone", 499.99),
+            new Product(3L, "Tablet", 299.99)
+    );
+
     @GetMapping("/products")
     public String listProducts(Model model) {
-        List<Product> products = Arrays.asList(
-                new Product(1L, "Laptop", 999.99),
-                new Product(2L, "Smartphone", 499.99),
-                new Product(3L, "Tablet", 299.99)
-        );
-
         model.addAttribute("products", products);
         return "product_list";
     }
 
+    public Product getFromId(Long id) {
+        for (Product p : products) {
+            if (p.getId().equals(id)) {
+                return new Product(id, p.getDescription(), p.getPrice());
+            }
+        }
+        return null;
+    }
+
     @GetMapping("/products/{id}")
     public String showProduct(@PathVariable Long id, Model model) {
-        Product product = new Product(id, "Prodotto " + id, 100.0 + id);
+//        Se accedi a /prodotti/42, Spring mette 42 nella variabile id
+//        L’annotazione lega la parte dell’URL alla variabile del metodo
 
-        model.addAttribute("product", product);
-        return "product_details";
+        if (id <= 0) {
+            throw new ProductNotFoundException("Prodotto non trovato! ID: " + id);
+        } else {
+            Product product = getFromId(id);
+
+            model.addAttribute("product", product);
+            return "product_details";
+        }
     }
+
+    @GetMapping("/products/new")
+    public String newProduct(Model model) {
+        model.addAttribute("product", new Product());
+        return "add_product";
+    }
+
+    @PostMapping("/products")
+    public String addProduct(@ModelAttribute Product product) {
+        // Legare i dati di un form HTML a un oggetto Java
+        // Popolare automaticamente un oggetto da parametri della richiesta
+        System.out.println("Aggiunto prodotto: " + product.getDescription());
+        return "redirect:/products";
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public String handleException(ProductNotFoundException ex, Model model) {
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "error";
+    }
+
 
 //    @Autowired
 //    private UtenteRepository utenteRepository;
