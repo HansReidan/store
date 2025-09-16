@@ -9,13 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-public class StoreApplication implements CommandLineRunner {
-
-    private final DataSource dataSource;
-
-    public StoreApplication(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+public class StoreApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
@@ -26,9 +20,4 @@ public class StoreApplication implements CommandLineRunner {
 
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        final JdbcTemplate restTemplate = new JdbcTemplate(dataSource);
-        restTemplate.execute("select 1");
-    }
 }
