@@ -1,8 +1,10 @@
 package com.hansreidan.store.controllers;
 
 import com.hansreidan.store.domain.Product;
+import com.hansreidan.store.domain.ProductListForm;
 import com.hansreidan.store.domain.Utente;
 import com.hansreidan.store.exceptions.ProductNotFoundException;
+import com.hansreidan.store.jpa.ProductRepository;
 import com.hansreidan.store.jpa.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,8 @@ public class HomeController {
 //        System.out.println(homeName);
 //        return "index.html";
 //    }
+
+    private ProductRepository productRepository;
 
     List<Product> products = Arrays.asList(
             new Product(1L, "Roblox", 999.99),
@@ -62,6 +66,21 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/products/modify")
+    public String modifyProduct(Model model) {
+        List<Product> products = productRepository.findAll();
+        ProductListForm form = new ProductListForm();
+        form.setProducts(products);
+        model.addAttribute("form", form);
+        return "product_modify";
+    }
+
+    @PostMapping("/products/modify")
+    public String modifyProduct(@ModelAttribute ProductListForm form) {
+        productRepository.saveAll(form.getProducts());
+        return "redirect:/products";
+    }
+
     @GetMapping("/products/new")
     public String newProduct(Model model) {
         model.addAttribute("product", new Product());
@@ -81,6 +100,7 @@ public class HomeController {
         model.addAttribute("errorMessage", ex.getMessage());
         return "error";
     }
+
 
 
 //    @Autowired

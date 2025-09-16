@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifica Prodotto</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Modifica Prodotto</h1>
+<form th:action="@{/products/edit}" th:object="${form}" method="post">
+    <table>
+        <tr>
+            <th>Descrizione</th>
+            <th>Prezzo (€)</th>
+        </tr>
+        <tr th:each="product, iStat : *{products}">
+            <td>
+                <input type="hidden" th:field="*{products[__${iStat.index}__].id}" />
+                <input type="text" th:field="*{products[__${iStat.index}__].description}" />
+            </td>
+            <td>
+                <input type="text" th:field="*{products[__${iStat.index}__].price}" />
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Salva tutti</button>
+</form>
+<a href="/products">Torna all'elenco dei prodotti</a>
+</body>
+</html>
