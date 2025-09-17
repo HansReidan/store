@@ -28,7 +28,11 @@ public class HomeController {
 //        return "index.html";
 //    }
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public HomeController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     List<Product> products = Arrays.asList(
             new Product(1L, "Roblox", 999.99),
