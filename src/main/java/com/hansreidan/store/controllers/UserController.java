@@ -4,14 +4,15 @@ import com.hansreidan.store.domain.Utente;
 import com.hansreidan.store.jpa.UtenteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
@@ -32,12 +33,6 @@ public class UserController {
         Optional<Utente> userOpt = utenteRepository.findById(id);
         return userOpt.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-    // POST /api/users - Crea un nuovo utente
-    @PostMapping
-    public Utente createUser(@RequestBody Utente user) {
-        return utenteRepository.save(user);
     }
 
     // PUT /api/users/{id} - Aggiorna un utente esistente
@@ -66,14 +61,26 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    // CREAZIONE UTENTE POST
     @PostMapping
-    public ResponseEntity<Utente> createUser(@Valid @RequestBody Utente user,
-                                           BindingResult bindingResult) {
+    public ResponseEntity<String> createUser(@Valid @RequestBody Utente user,
+                                             BindingResult bindingResult) {
+        // Binding contiene i risultati della validazione. Se ci sono errori, possiamo
+        //gestirli appropriatamente
         if (bindingResult.hasErrors()) {
         // Gestione degli errori di validazione
-            return ResponseEntity.badRequest().build();
+            String errorMsg = bindingResult.getAllErrors()
+                    .stream()
+                    .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                    .collect(Collectors.joining(", "));
+            return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
         }
         Utente savedUser = utenteRepository.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+        return new ResponseEntity<>(savedUser.getId().toString() + " creato con successo", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/search")
+    public List<Utente> searchUser(@RequestParam String nome) {
+        return utenteRepository.findByNome(nome);
     }
 }
