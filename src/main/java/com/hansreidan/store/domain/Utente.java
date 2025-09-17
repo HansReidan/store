@@ -1,5 +1,6 @@
 package com.hansreidan.store.domain;
 
+import com.hansreidan.store.security.ValidPassword;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +28,8 @@ public class Utente {
     @NotBlank(message = "Il campo email non può essere vuoto")
     @NotNull(message = "L'email non può essere nulla")
     private String email;
+    @ValidPassword
+    private String password;
 
     // VARI @TAG
 //    @Size Specifica la dimensione minima e/o massima di una collezione, array, stringa, ecc.
