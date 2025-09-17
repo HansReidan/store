@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/users")
 public class UserController {
 
+    // SLIDE 381
+
     @Autowired
     private UtenteRepository utenteRepository;
 
