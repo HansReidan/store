@@ -1,8 +1,8 @@
 package com.hansreidan.store.controllers;
 
 import com.hansreidan.store.exceptions.InvoiceNotFoundException;
-import com.hansreidan.store.first_project.assets.Invoice;
-import com.hansreidan.store.first_project.assets.InvoiceService;
+import com.hansreidan.store.first_project.Invoice;
+import com.hansreidan.store.first_project.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

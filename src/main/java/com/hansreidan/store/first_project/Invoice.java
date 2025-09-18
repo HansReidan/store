@@ -1,4 +1,4 @@
-package com.hansreidan.store.first_project.assets;
+package com.hansreidan.store.first_project;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -18,7 +18,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/users")
 public class UserController {
 
+    // RestController prende i file JSON
+    // Controller invece HTML
     // SLIDE 381
+    // Design Pattern
 
     @Autowired
     private UtenteRepository utenteRepository;

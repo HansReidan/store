@@ -1,4 +1,4 @@
-package com.hansreidan.store.first_project.assets;
+package com.hansreidan.store.first_project;
 
 import com.hansreidan.store.exceptions.InvoiceNotFoundException;
 import com.hansreidan.store.jpa.InvoiceRepository;
