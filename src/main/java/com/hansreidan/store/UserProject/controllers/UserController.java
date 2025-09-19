@@ -16,6 +16,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
+
+// ComponentScan(basePackeges = "com.example")
+// Qualifier -> Nome per il Bean
+// Wildfire -> Apache
+
 public class UserController {
 
     // RestController prende i file JSON
@@ -24,7 +29,7 @@ public class UserController {
     // HTTP Master (app per SQL/crazione table)
     // Design Pattern
 
-    @Autowired
+    @Autowired // Alloca memoria, attento in ampio uso
     private UtenteRepository utenteRepository;
 
     // GET /api/users - Recupera tutti gli utenti
