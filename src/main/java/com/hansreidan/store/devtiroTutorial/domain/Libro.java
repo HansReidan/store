@@ -1,4 +1,4 @@
-package com.hansreidan.store.domain;
+package com.hansreidan.store.devtiroTutorial.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Autore {
+public class Libro {
 
-    private Integer id;
-    private String autore;
-    private Integer eta;
+    private String isbn;
+    private String titolo;
+    private Long autoreId;
 
 }

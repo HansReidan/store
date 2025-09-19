@@ -1,4 +1,4 @@
-package com.hansreidan.store.config;
+package com.hansreidan.store.devtiroTutorial.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
