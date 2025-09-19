@@ -1,4 +1,4 @@
-package com.hansreidan.store.exceptions;
+package com.hansreidan.store.lezione1.exceptions;
 
 public class InvoiceNotFoundException extends RuntimeException {
 

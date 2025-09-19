@@ -1,6 +1,6 @@
-package com.hansreidan.store.domain;
+package com.hansreidan.store.UserProject.domain;
 
-import com.hansreidan.store.security.ValidPassword;
+import com.hansreidan.store.UserProject.security.ValidPassword;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

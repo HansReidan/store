@@ -1,19 +1,13 @@
-package com.hansreidan.store.controllers;
+package com.hansreidan.store.Prodotti.controllers;
 
-import com.hansreidan.store.domain.Product;
-import com.hansreidan.store.domain.ProductListForm;
-import com.hansreidan.store.domain.Utente;
-import com.hansreidan.store.exceptions.ProductNotFoundException;
-import com.hansreidan.store.jpa.ProductRepository;
-import com.hansreidan.store.jpa.UtenteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import com.hansreidan.store.Prodotti.domain.Product;
+import com.hansreidan.store.Prodotti.domain.ProductListForm;
+import com.hansreidan.store.Prodotti.exceptions.ProductNotFoundException;
+import com.hansreidan.store.Prodotti.jpa.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

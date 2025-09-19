@@ -1,4 +1,4 @@
-package com.hansreidan.store.exceptions;
+package com.hansreidan.store.Prodotti.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

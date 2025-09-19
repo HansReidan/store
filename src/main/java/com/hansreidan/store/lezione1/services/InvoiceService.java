@@ -1,4 +1,6 @@
-package com.hansreidan.store.first_project;
+package com.hansreidan.store.lezione1.services;
+
+import com.hansreidan.store.lezione1.domain.Invoice;
 
 import java.util.List;
 

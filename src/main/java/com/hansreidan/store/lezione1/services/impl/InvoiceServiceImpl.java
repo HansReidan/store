@@ -1,7 +1,9 @@
-package com.hansreidan.store.first_project;
+package com.hansreidan.store.lezione1.services.impl;
 
-import com.hansreidan.store.exceptions.InvoiceNotFoundException;
-import com.hansreidan.store.jpa.InvoiceRepository;
+import com.hansreidan.store.lezione1.exceptions.InvoiceNotFoundException;
+import com.hansreidan.store.lezione1.jpa.InvoiceRepository;
+import com.hansreidan.store.lezione1.domain.Invoice;
+import com.hansreidan.store.lezione1.services.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

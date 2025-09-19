@@ -1,4 +1,4 @@
-package com.hansreidan.store.domain;
+package com.hansreidan.store.Prodotti.domain;
 
 import lombok.Getter;
 import lombok.Setter;

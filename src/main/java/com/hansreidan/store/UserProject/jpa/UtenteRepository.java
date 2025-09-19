@@ -1,6 +1,6 @@
-package com.hansreidan.store.jpa;
+package com.hansreidan.store.UserProject.jpa;
 
-import com.hansreidan.store.domain.Utente;
+import com.hansreidan.store.UserProject.domain.Utente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

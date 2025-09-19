@@ -1,7 +1,5 @@
 package com.hansreidan.store.config;
 
-import com.hansreidan.store.PaymentService;
-import org.h2.engine.Database;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;

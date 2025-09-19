@@ -1,4 +1,4 @@
-package com.hansreidan.store.domain;
+package com.hansreidan.store.Prodotti.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

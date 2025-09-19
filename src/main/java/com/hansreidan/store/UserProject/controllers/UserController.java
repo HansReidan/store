@@ -1,7 +1,7 @@
-package com.hansreidan.store.controllers;
+package com.hansreidan.store.UserProject.controllers;
 
-import com.hansreidan.store.domain.Utente;
-import com.hansreidan.store.jpa.UtenteRepository;
+import com.hansreidan.store.UserProject.domain.Utente;
+import com.hansreidan.store.UserProject.jpa.UtenteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -21,6 +21,7 @@ public class UserController {
     // RestController prende i file JSON
     // Controller invece HTML
     // SLIDE 381
+    // HTTP Master (app per SQL/crazione table)
     // Design Pattern
 
     @Autowired
@@ -71,7 +72,7 @@ public class UserController {
     public ResponseEntity<String> createUser(@Valid @RequestBody Utente user,
                                              BindingResult bindingResult) {
         // Binding contiene i risultati della validazione. Se ci sono errori, possiamo
-        //gestirli appropriatamente
+        // gestirli appropriatamente
         if (bindingResult.hasErrors()) {
         // Gestione degli errori di validazione
             String errorMsg = bindingResult.getAllErrors()
