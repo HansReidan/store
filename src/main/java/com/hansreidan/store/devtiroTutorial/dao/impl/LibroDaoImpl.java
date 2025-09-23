@@ -28,26 +28,26 @@ public class LibroDaoImpl implements LibroDAO {
     }
 
     @Override
-    public Optional<Libro> find(String isbn) {
+    public Optional<Libro> findOne(String isbn) {
         return Optional.empty();
     }
 
-//    @Override
-//    public Optional<Autore> find(long id) {
-//        List<Autore> results = jdbcTemplate.query(
-//                "SELECT id, autore.autore, eta FROM autore WHERE id = ? LIMIT 1",
-//                new AutoreDaoImpl.AutoreRowMapper(), id);
-//        return results.stream().findFirst();
-//    }
+    @Override
+    public Optional<Libro> findAll(String ibsn) {
+        List<Libro> results = jdbcTemplate.query(
+                "SELECT id, libro.autore, eta FROM autore WHERE id = ? LIMIT 1",
+                new LibroDaoImpl.LibroRowMapper(), ibsn);
+        return results.stream().findFirst();
+    }
 
-    public static class AutoreRowMapper implements RowMapper<Autore> {
+    public static class LibroRowMapper implements RowMapper<Libro> {
 
         @Override
-        public Autore mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Autore.builder()
-                    .id(rs.getLong("id"))
-                    .autore(rs.getString("autore"))
-                    .eta(rs.getInt("eta"))
+        public Libro mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return Libro.builder()
+                    .isbn(rs.getString("isbn"))
+                    .titolo(rs.getString("titolo"))
+                    .autoreId(rs.getLong("autoreid"))
                     .build();
         }
     }
