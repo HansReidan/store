@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 // ComponentScan(basePackeges = "com.example")
 // Qualifier -> Nome per il Bean
 // Wildfire -> Apache
+// Centos -> Server
 
 public class UserController {
 
