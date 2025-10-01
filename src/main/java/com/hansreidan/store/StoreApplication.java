@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 public class StoreApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+        SpringApplication.run(StoreApplication.class, args);
 
         // https://www.youtube.com/watch?v=Nv2DERaMx-4
         // https://spring.io/guides
