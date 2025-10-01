@@ -15,8 +15,8 @@ public class LoadDatabase {
     CommandLineRunner init(EmployeeRepository employeeRepository) {
 
         return args -> {
-            log.info("Inizializzazione " + employeeRepository.save(new Employee("Bilbo Bagging", "piedone")));
-            log.info("Inizializzazione " + employeeRepository.save(new Employee("Frodo Baggins", "ladro")));
+            log.info("Inizializzazione " + employeeRepository.save(new Employee("Bilbo","Bagging", "piedone")));
+            log.info("Inizializzazione " + employeeRepository.save(new Employee("Frodo", "Baggins", "ladro")));
         };
     }
 
